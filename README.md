@@ -1,5 +1,6 @@
 # WalletLess
 Digital wallet for loyalty cards
+
 It is an application whose idea is to facilitate and increase the use of loyalty cards in the purchase process.
 The application has simple navigation. Screen where it represents the electronic wallet where all scanned cards are listed.
 A screen that displays all the choices of merchants from which the user chooses which card he has and scans it with the help of the camera. 
