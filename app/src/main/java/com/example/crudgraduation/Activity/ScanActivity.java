@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 public class ScanActivity extends AppCompatActivity {
@@ -33,6 +35,7 @@ public class ScanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.transparent)));
         barcodeImage = findViewById(R.id.barcodeImage);
         scanCode();
     }
@@ -81,8 +84,8 @@ public class ScanActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void saveBitmapAndConvert(String cardName, String barcode, String cardImage, ArrayList<GeoLocation> locations,String typeOfCode) throws IOException, ExecutionException, InterruptedException {
         //make bitmap from URL
-        Bitmap bitmap = new LoadBitmap().execute(cardImage).get();
-        byte[] bytesOfImage= DbBitmapUtility.getBytes(bitmap); //first convert the bitmap to byte[]
+        Bitmap bitmap = new LoadBitmap().execute(cardImage).get(); //go in the background thread to make a bitmap
+        byte[] bytesOfImage= DbBitmapUtility.getBytes(bitmap); //first convert the bitmap to byte[], than save the object to database
         saveCardWithLocationsIntoDataBase(cardName,barcode,bytesOfImage,locations,typeOfCode);
     }
 

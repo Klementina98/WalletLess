@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Default style for PreferenceCategory. -->
+    <attr name="preferenceCategoryStyle" format="reference" />
+
     <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">#FFFFFF</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="textColorAlertDialogListItem">#FFFFFF</item>
     </style>
+    <style name="preferenceCategoryStyle" >
+        <item name="android:textColor">@color/purple_700</item>
+        <item name="android:background">@color/line</item>
+        <item name="android:textSize">50dp</item>
+    </style>
+
 
 </resources>

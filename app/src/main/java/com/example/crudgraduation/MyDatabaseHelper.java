@@ -83,9 +83,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         //now use the SQLiteDatabase object to insert the data into the table
         long result = db.insert(TABLE_NAME,null,cv);
         if (result == -1){
-            Toast.makeText(context,"FAILED", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context,"FAILED", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context,"Card Insert successfully!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context,"Card Insert successfully!", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -125,6 +125,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
     public boolean existCard(String cardName){
         SQLiteDatabase db = this.getReadableDatabase();
+        //Cursors are what contain the result set of a query made against a database in Android
         Cursor c = db.rawQuery("SELECT * FROM " + TABLE_NAME + " where "+ COLUMN_NAME +"= '" +cardName + "'" , null);
         if (c.getCount()>0){
             return true;
@@ -140,9 +141,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME, "_id=?", new String[]{String.valueOf(cardId)});
         if (result == -1){
-            Toast.makeText(context,"Failed to delete", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context,"Failed to delete", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context,"Successfully deleted", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context,"Card successfully deleted", Toast.LENGTH_SHORT).show();
         }
         db.close();
     }
@@ -154,9 +155,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME2, COLUMN_CARD_NAME+"=?", new String[]{String.valueOf(cardName)});
         if (result == -1){
-            Toast.makeText(context,"Failed to delete", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context,"Failed to delete", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context,"Successfully deleted", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context,"Successfully deleted", Toast.LENGTH_SHORT).show();
         }
         db.close();
     }

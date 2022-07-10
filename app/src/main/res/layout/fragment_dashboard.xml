@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/app_background">
+    android:layout_height="match_parent">
 
 
     <FrameLayout
@@ -26,6 +25,32 @@
 
 
     </FrameLayout>
+
+
+
+        <ImageView
+            android:id="@+id/scanImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/barcode_scan"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+
+            />
+        <TextView
+            android:id="@+id/scan_cards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/scanImage"
+            android:text="@string/scan_cards"/>
+
+
+
+
 
 
 

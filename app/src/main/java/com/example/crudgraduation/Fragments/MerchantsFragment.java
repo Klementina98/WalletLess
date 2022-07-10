@@ -100,9 +100,6 @@ public class MerchantsFragment extends Fragment {
                         allCards.setAdapter(mainAdapter);
 
                     }
-                    for (Card c:list){
-                        System.out.println(c.getCardName());
-                    }
                     if (list.size()>0){
                         list_status.setVisibility(View.GONE);
                     }
@@ -115,6 +112,7 @@ public class MerchantsFragment extends Fragment {
                 }
 
             });
+            //Causes the Runnable r(checkListSize) to be added to the message queue, to be run after the specified amount of time elapses.
             (new Handler()).postDelayed(this::checkListSize, 2000);
 
             search.addTextChangedListener(new TextWatcher() {

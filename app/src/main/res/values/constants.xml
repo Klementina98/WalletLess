@@ -13,4 +13,6 @@
         <item>sq</item>
     </string-array>
 
+    <string name="app_version_date" translatable="false">10.07.2022</string>
+
 </resources>

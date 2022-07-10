@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.example.crudgraduation.R;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Objects;
 
 
 public class SplashActivty extends AppCompatActivity {
@@ -27,10 +29,11 @@ public class SplashActivty extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_activty);
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.transparent)));
         hasActiveInternetConnection(this);
         image = findViewById(R.id.gif);
 
-        Glide.with(this).asGif().load(R.raw.testgif1).
+        Glide.with(this).asGif().load(R.raw.splashgif).
     apply(new RequestOptions().override(800, 800)).into(image);
 
         new Handler().postDelayed(new Runnable() {

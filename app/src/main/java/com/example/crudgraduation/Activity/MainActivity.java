@@ -2,6 +2,7 @@ package com.example.crudgraduation.Activity;
 
 
 import androidx.annotation.RequiresApi;
+import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -10,11 +11,13 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.ActivityManager;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import com.example.crudgraduation.Fragments.DashboardFragment;
 import com.example.crudgraduation.Fragments.MerchantsFragment;
+import com.example.crudgraduation.Fragments.SettingsFragment;
 import com.example.crudgraduation.Fragments.SettingssFragment;
 import com.example.crudgraduation.R;
 import com.example.crudgraduation.databinding.ActivityMainBinding;
@@ -23,9 +26,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-
+@VisibleForTesting
 public class MainActivity extends AppCompatActivity {
-
 
     ActivityMainBinding binding;
 
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.transparent)));
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar_layout);
         loadLocale();
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new MerchantsFragment());
                     break;
                 case R.id.settings:
-                    replaceFragment(new SettingssFragment());
+                    replaceFragment(new SettingsFragment());
                     break;
             }
             return true;
@@ -83,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) { //strelkata nazad gore
+    public boolean onOptionsItemSelected(MenuItem item) { //arrow back
         switch (item.getItemId()) {
             case android.R.id.home:
                 getSupportFragmentManager().popBackStack();
@@ -95,7 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void onBackPressed() { //sistemskoto
+    public void onBackPressed() { //system
+
         super.onBackPressed();
 
         ActivityManager mngr = (ActivityManager) getSystemService( ACTIVITY_SERVICE );

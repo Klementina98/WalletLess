@@ -29,6 +29,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.crudgraduation.Adapter.CustomAdapter;
@@ -49,6 +50,8 @@ import java.util.stream.Collectors;
 public class DashboardFragment extends Fragment implements CustomAdapter.onCardListener, LocationListener {
 
     ImageView barcodeImage;
+    ImageView imageScanner;
+    TextView scanCards;
     RecyclerView scannedCards;
     MyDatabaseHelper myDB;
     CustomAdapter customAdapter;
@@ -100,7 +103,9 @@ public class DashboardFragment extends Fragment implements CustomAdapter.onCardL
     void storeDataInArrays() {
         Cursor cursor = myDB.readAllData();
         if (cursor.getCount() == 0) { //means there is no data
-            Toast.makeText(getContext(), "No data", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), "No data", Toast.LENGTH_SHORT).show();
+            imageScanner.setVisibility(View.VISIBLE);
+            scanCards.setVisibility(View.VISIBLE);
         } else {
             while (cursor.moveToNext()) {
                 Card card = new Card(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getBlob(3),cursor.getString(4));
@@ -113,7 +118,7 @@ public class DashboardFragment extends Fragment implements CustomAdapter.onCardL
     void storeGeolocationsInArrays() {
         Cursor cursor = myDB.readAllDataFromLocations();
         if (cursor.getCount() == 0) { //means there is no data
-            Toast.makeText(getContext(), "No data", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), "No data", Toast.LENGTH_SHORT).show();
         } else {
             while (cursor.moveToNext()) {
                 GeoLocation location = new GeoLocation(cursor.getString(1), cursor.getDouble(2), cursor.getDouble(3));
@@ -166,6 +171,13 @@ public class DashboardFragment extends Fragment implements CustomAdapter.onCardL
                     scannedLocations.remove(g);
                 }
                 customAdapter.notifyDataSetChanged();
+                Cursor cursor = myDB.readAllData();
+                if (cursor.getCount() == 0) { //means there is no data
+                    //Toast.makeText(getContext(), "No data", Toast.LENGTH_SHORфРT).show();
+                    imageScanner.setVisibility(View.VISIBLE);
+                    scanCards.setVisibility(View.VISIBLE);
+                }
+
             }
         });
         String no = getResources().getString(R.string.no);
@@ -187,6 +199,9 @@ public class DashboardFragment extends Fragment implements CustomAdapter.onCardL
         barcodeImage = rootView.findViewById(R.id.barcodeImage);
         scannedCards = rootView.findViewById(R.id.scannedCards);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
+        imageScanner = rootView.findViewById(R.id.scanImage);
+        scanCards = rootView.findViewById(R.id.scan_cards);
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -214,9 +229,9 @@ public class DashboardFragment extends Fragment implements CustomAdapter.onCardL
         BitMatrix bitMatrix;
         try {
             if (list.get(position).getTypeOfCode().equals("QR_CODE")){
-                 bitMatrix = multiFormatWriter.encode(list.get(position).getBarCode(), BarcodeFormat.QR_CODE, barcodeImage.getWidth(), barcodeImage.getHeight());
+                bitMatrix = multiFormatWriter.encode(list.get(position).getBarCode(), BarcodeFormat.QR_CODE, barcodeImage.getWidth(), barcodeImage.getHeight());
             }else {
-                 bitMatrix = multiFormatWriter.encode(list.get(position).getBarCode(), BarcodeFormat.CODE_128, barcodeImage.getWidth(), barcodeImage.getHeight());
+                bitMatrix = multiFormatWriter.encode(list.get(position).getBarCode(), BarcodeFormat.CODE_128, barcodeImage.getWidth(), barcodeImage.getHeight());
             }
             //translate bitMatrix  to bitMap
             Bitmap bitmap = Bitmap.createBitmap(barcodeImage.getWidth(), barcodeImage.getHeight(), Bitmap.Config.RGB_565);
@@ -323,22 +338,25 @@ public class DashboardFragment extends Fragment implements CustomAdapter.onCardL
     @Override
     public void onLocationChanged(Location location) {
         Card cardZaDialog = null;
-        System.out.println(location.getLatitude()+"==="+location.getLongitude()); //android 11 tochno, android 9 blizu nas kaj dzandarto
-        for (GeoLocation g : scannedLocations) {
-            double sloppyMathDistance = arcDistance(g.getLatitude(), g.getLongitude(), location.getLatitude(), location.getLongitude());
-            System.out.println("SloppyMath Distance between my location and location on phone " + sloppyMathDistance);
-            g.setDistance(sloppyMathDistance); //set the distance here
-            if (sloppyMathDistance <= 60 && popUpFlag==false) {
-                cardZaDialog = list.stream().filter(card -> card.getCardName().equals(g.getCard_Id())).findFirst().get();
-                System.out.println("====="+cardZaDialog.getCardName());
-                onPause();
-                showBarCodeDialog(g.getCard_Id(), cardZaDialog.getBarCode(),cardZaDialog.getTypeOfCode());
-                popUpFlag=true;
+        System.out.println(location.getLatitude()+"==="+location.getLongitude());
+        if(scannedLocations.size()>0) {
+            for (GeoLocation g : scannedLocations) {
+                double sloppyMathDistance = arcDistance(g.getLatitude(), g.getLongitude(), location.getLatitude(), location.getLongitude());
+                System.out.println("SloppyMath Distance between my location and location on phone " + sloppyMathDistance);
+                g.setDistance(sloppyMathDistance); //set the distance here
+                if (sloppyMathDistance <= 60 && popUpFlag == false) {
+                    cardZaDialog = list.stream().filter(card -> card.getCardName().equals(g.getCard_Id())).findFirst().get();
+                    System.out.println("=====" + cardZaDialog.getCardName());
+                    onPause();
+                    showBarCodeDialog(g.getCard_Id(), cardZaDialog.getBarCode(), cardZaDialog.getTypeOfCode());
+                    popUpFlag = true;
+                }
             }
+
+            //let's sort them, first create a comparator in GeoLocation class and with stream sort them, and pop up the first one
+            List<GeoLocation> orderByDistanceList = scannedLocations.stream().sorted(GeoLocation.comapreByDistance).collect(Collectors.toList());
+            sortCards(orderByDistanceList);
         }
-        //let's sort them, first create a comparator in GeoLocation class and with stream sort them, and pop up the first one
-        List<GeoLocation> orderByDistanceList =  scannedLocations.stream().sorted(GeoLocation.comapreByDistance).collect(Collectors.toList());
-        sortCards(orderByDistanceList);
 
     }
     @SuppressLint("NotifyDataSetChanged")

@@ -34,5 +34,32 @@
     <string name="delete_Card">Дали сте сигурни дека сакате да ја избришете картичката?</string>
     <string name="yes">Да</string>
     <string name="no">Не</string>
+    <string name="scan_cards">Скенирај картици</string>
+
+    <!-- Preference Titles -->
+    <string name="language">Јазик</string>
+    <string name="privacy_policy">Политика за приватност</string>
+    <string name="support">Корисничка подршка</string>
+    <string name="about_the_app">За апликацијата</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- About the app -->
+    <string name="name_of_app">Име на апликацијата</string>
+    <string name="tittle">WalletLess app</string>
+    <string name="version">Верзија</string>
+    <string name="date_of_version">Датум на верзија</string>
+    <string name="developed_by">Развиена од</string>
+    <string name="developer">Клементина Ѓоргиева</string>
+
+    <!-- Support -->
+    <string name="call">Јавете ни се</string>
+    <string name="email">Испратете ни е-пошта</string>
+
+    <string name="rights">Сите права задржани</string>
+    <string name="settings_app">Прилагодувања за апликацијата</string>
+
 
 </resources>
