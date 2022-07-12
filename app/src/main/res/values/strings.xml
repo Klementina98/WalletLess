@@ -8,7 +8,7 @@
     <string name="lbl_select_language">Choose language</string>
     <string name="settings_localization_language_title">Language</string>
     <string name="en">English</string>
-    <string name="mk">Macedonian</string>
+    <string name="mk">Macedonian</string>b
     <string name="application_name">Application name</string>
     <string name="wallet_less">WalletLess</string>
     <string name="verison">1.0.0</string>
