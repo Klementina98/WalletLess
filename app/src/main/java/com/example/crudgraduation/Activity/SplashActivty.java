@@ -34,7 +34,7 @@ public class SplashActivty extends AppCompatActivity {
         image = findViewById(R.id.gif);
 
         Glide.with(this).asGif().load(R.raw.splashgif).
-    apply(new RequestOptions().override(800, 800)).into(image);
+    apply(new RequestOptions().ovAerride(800, 800)).into(image);
 
         new Handler().postDelayed(new Runnable() {
             @Override
