@@ -77,7 +77,7 @@ public class MerchantsFragment extends Fragment {
     private void findViews(View rootView) {
         addMerchant = rootView.findViewById(R.id.add_merchant);
         search = rootView.findViewById(R.id.searchText);
-        ref = FirebaseDatabase.getInstance().getReference().child("AllCards");
+        ref = FirebaseDatabase.getInstance().getReference().child("MKD");
         allCards = rootView.findViewById(R.id.recyclerListCard);
         allCards.setLayoutManager(new LinearLayoutManager(getContext()));
         list_status = rootView.findViewById(R.id.list_status);

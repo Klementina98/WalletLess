@@ -24,7 +24,7 @@ public class AddMerchantActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_merchant);
-        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.transparent)));
+        //Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.transparent)));
         nameMerchant =findViewById(R.id.merchantName);
         descriptionMerchant = findViewById(R.id.merchantDesc);
         sendEmail = findViewById(R.id.send_request);

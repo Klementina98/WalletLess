@@ -1,6 +1,5 @@
 package com.example.crudgraduation.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +17,9 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Objects;
+import android.app.ActionBar;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class SplashActivty extends AppCompatActivity {
@@ -29,12 +31,11 @@ public class SplashActivty extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_activty);
-        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.transparent)));
         hasActiveInternetConnection(this);
         image = findViewById(R.id.gif);
 
         Glide.with(this).asGif().load(R.raw.splashgif).
-    apply(new RequestOptions().ovAerride(800, 800)).into(image);
+                apply(new RequestOptions().override(800, 800)).into(image);
 
         new Handler().postDelayed(new Runnable() {
             @Override

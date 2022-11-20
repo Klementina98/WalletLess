@@ -11,7 +11,7 @@ android {
         minSdk 21
         targetSdk 31
         versionCode 6
-        versionName "1.5"
+        versionName "1.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -51,7 +51,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.4.1'
     implementation 'androidx.navigation:navigation-ui:2.4.1'
     implementation 'androidx.preference:preference:1.2.0'
-    implementation 'androidx.test.espresso:espresso-contrib:3.4.0'
+//    implementation 'androidx.test.espresso:espresso-contrib:3.4.0'
     implementation 'com.google.firebase:firebase-auth:21.0.1'
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
     debugImplementation 'androidx.fragment:fragment-testing:1.4.1'
