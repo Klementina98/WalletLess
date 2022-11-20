@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class PolicyActivity extends AppCompatActivity {
     WebView webView;
-    public String fileName = "policy.html";
+    public String fileName = "test.html";
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override

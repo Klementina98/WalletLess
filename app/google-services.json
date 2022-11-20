@@ -8,6 +8,42 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:677933024926:android:3b3ca1c7a74bfe73141d8f",
+        "android_client_info": {
+          "package_name": "com.anitnemelk.walletless"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "677933024926-50bijkd0j1h0035a86b5m0ln9soflbr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoTDgPjc7kidyYJicSyu8JLhItwi9cfDU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "677933024926-50bijkd0j1h0035a86b5m0ln9soflbr9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "677933024926-8rlftpogcfmqlo5htnr65khai7j6oo70.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.WalletLess"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:677933024926:android:c54d1b1a1671a58e141d8f",
         "android_client_info": {
           "package_name": "com.example.crudgraduation"

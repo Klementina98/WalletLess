@@ -36,13 +36,14 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="250dp"
             android:id="@+id/merchantDesc"
             android:textAlignment="center"
             android:hint="@string/merchant_description"
             android:textColorHint="@color/white"
             android:layout_marginTop="30dp"
             android:textColor="@color/white"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/edittext_search_shape"/>
 
         <LinearLayout

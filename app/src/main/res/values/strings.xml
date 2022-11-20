@@ -16,10 +16,10 @@
     <string name="version_date_value">21.4.2022</string>
     <string name="application_developer">Application developer</string>
     <string name="klementina_gjorgieva">Klementina Gjorgieva</string>
-    <string name="text_new_request">Hello,\n feel free to request for new merchant</string>
+    <string name="text_new_request">Hello,\n feel free to request for a new merchant</string>
     <string name="merchant_name">Merchant name here</string>
     <string name="merchant_description">Merchant description here</string>
-    <string name="text_receive_email">We are gonna receive your message trough email</string>
+    <string name="text_receive_email">We are gonna receive your message through email</string>
     <string name="btn_send">Send</string>
     <string name="text_version">Version</string>
     <string name="no_internet">You need to connect to internet</string>
@@ -59,9 +59,15 @@
 
     <string name="rights">All rights reserved</string>
     <string name="settings_app">App configuration</string>
-
-
-
+    <string name="login">login</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_password">Enter password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forget_password">Forget password</string>
+    <string name="register">No account yet? Create one</string>
+    <string name="new_client">Become our client</string>
+    <string name="enter_username">Enter username</string>
+    <string name="register_user">Register user</string>
 
 
 </resources>

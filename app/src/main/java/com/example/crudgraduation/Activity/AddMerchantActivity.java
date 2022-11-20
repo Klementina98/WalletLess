@@ -39,7 +39,7 @@ public class AddMerchantActivity extends AppCompatActivity {
 
                 Intent email = new Intent(Intent.ACTION_SEND);
                 email.setPackage("com.google.android.gm");
-                String to = "klementinagorgieva7@hotmail.com";
+                String to = "walletlessapp@gmail.com";
                 email.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
                 email.putExtra(Intent.EXTRA_SUBJECT, merchantName);
                 email.putExtra(Intent.EXTRA_TEXT, merchantDescription);

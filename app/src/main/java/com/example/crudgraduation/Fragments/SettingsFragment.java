@@ -74,20 +74,20 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
     public void setUp(){
         loadLocale();
-        privacyPolicy();
+//        privacyPolicy();
 //        supportCall();
         supportEmail();
     }
-    public void privacyPolicy(){
-        Preference myPref = (Preference) findPreference("privacy_policy");
-        myPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            public boolean onPreferenceClick(Preference preference) {
-                Intent intent = new Intent(getActivity(), PolicyActivity.class);
-                startActivity(intent);
-                return true;
-            }
-        });
-    }
+//    public void privacyPolicy(){
+//        Preference myPref = (Preference) findPreference("privacy_policy");
+//        myPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//            public boolean onPreferenceClick(Preference preference) {
+//                Intent intent = new Intent(getActivity(), PolicyActivity.class);
+//                startActivity(intent);
+//                return true;
+//            }
+//        });
+//    }
 //    public void supportCall(){
 //        Preference myPref = (Preference) findPreference("call");
 //        myPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {

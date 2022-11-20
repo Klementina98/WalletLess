@@ -71,7 +71,7 @@ public class ScanActivity extends AppCompatActivity {
             else {
                 Intent intent2 = new Intent(this, MainActivity.class);
                 startActivity(intent2);
-                Toast.makeText(this,"No results",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this,"No results",Toast.LENGTH_SHORT).show();
             }
         }else{
             super.onActivityResult(requestCode, resultCode,data);

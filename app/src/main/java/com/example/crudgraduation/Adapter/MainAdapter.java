@@ -1,16 +1,22 @@
 package com.example.crudgraduation.Adapter;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
+import static androidx.test.InstrumentationRegistry.getContext;
 
+import android.annotation.SuppressLint;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.example.crudgraduation.Activity.MainActivity;
 import com.example.crudgraduation.Activity.ScanActivity;
 import com.example.crudgraduation.Model.Card;
 import com.example.crudgraduation.R;
@@ -72,11 +78,21 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
         ImageView cardImage;
         TextView cardName;
+        ImageView promotion;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             cardImage = (ImageView) itemView.findViewById(R.id.card_image);
             cardName = (TextView) itemView.findViewById(R.id.card_name);
+            promotion = (ImageView) itemView.findViewById(R.id.promotions);
+            promotion.setClickable(true);
+            promotion.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://vero.com.mk/?lang=en"));
+                    v.getContext().startActivity(browserIntent);
+                }
+            });
             itemView.setOnClickListener(this);
 
         }

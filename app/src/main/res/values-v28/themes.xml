@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="Theme.CRUDgraduation" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryVariant">@color/primary_color</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_700</item>
+        <item name="colorSecondaryVariant">@color/primary_color</item>
+        <item name="colorOnSecondary">@color/white</item>
 
+
+        <!-- Applying style like this  -->
+        <item name="actionBarStyle">@style/Widget.MaterialComponents.ActionBar.Primary</item>
+        <!-- Customize your theme here. -->
+    </style>
     <!-- Default style for PreferenceCategory. -->
     <attr name="preferenceCategoryStyle" format="reference" />
 

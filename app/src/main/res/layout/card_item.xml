@@ -35,16 +35,24 @@
             android:layout_height="60dp"
             android:layout_centerVertical="true"
             android:src="@mipmap/ic_launcher" />
+        <ImageView
+            android:id="@+id/promotions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_discount"
+            android:visibility="gone"
+            android:layout_alignParentEnd="true"
+            />
 
         <TextView
             android:id="@+id/card_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/card_image"
             android:gravity="center"
             android:text="ZEGIN"
             android:textColor="@color/white"
-            android:layout_centerVertical="true"
             android:textSize="20sp"
             android:textStyle="bold" />
 

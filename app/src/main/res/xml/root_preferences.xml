@@ -19,15 +19,6 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/privacy_policy"
-        >
-        <Preference
-
-            app:key="privacy_policy"
-            app:icon="@drawable/ic_privacy_policy"
-            app:title="@string/privacy_policy"/>
-
-    </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/support">
 
